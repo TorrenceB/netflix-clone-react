@@ -8,9 +8,9 @@ function App() {
     <div className="App">
       <Row
         title="NETFLIX ORIGINALS"
-        fetctUrl={requests.fetchNetflixOriginals}
+        fetchUrl={requests.fetchNetflixOriginals}
       />
-      <Row title="Trending Now" fetctUrl={requests.fetchTrending} />
+      <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
     </div>
   );
 }
