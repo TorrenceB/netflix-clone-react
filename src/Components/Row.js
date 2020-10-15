@@ -7,18 +7,35 @@ const Row = ({ title, fetchUrl }) => {
   // A snippet of code which runs based on a specific condition/variable
   useEffect(() => {
     // if [], run once when the row loads and do not run again
-    (async () => {
+    async function fetchData() {
       const request = await axios.get(fetchUrl);
-      console.log(request);
+      setMovies(request.data.results);
       return request;
-    })();
-  }, []);
+    }
+    fetchData();
+
+    // (async () => {
+    //   const request = await axios.get(fetchUrl);
+    //   console.log(`Request: ${request.data}`);
+    //     if (request != null) {
+    //   setMovies(request.data.results);
+    //     }
+    //   return request;
+    // })();
+  }, [fetchUrl]);
+
+  console.log(`Movies: ${movies}`);
 
   return (
-    <div>
-      {/* title */}
+    <div className="row">
       <h2>{title}</h2>
-      {/* container -> posters */}
+      <div className="row-posters">
+        {/* row-posters */}
+        {movies.map((movie) => {
+          console.log(`Movie: ${movie}`);
+          // <img src={movie.poster_path} alt={movie.name}/>
+        })}
+      </div>
     </div>
   );
 };
