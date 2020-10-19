@@ -4,7 +4,12 @@ import "../Row.css";
 
 const baseUrl = "https://image.tmdb.org/t/p/original/";
 
-const Row = ({ title, fetchUrl }) => {
+const Row = ({ title, fetchUrl, isLargeRow }) => {
+  /*
+    - movies represents our initial state
+    - setMovies is the method called to 
+      update our state.
+  */
   const [movies, setMovies] = useState([]);
 
   // A snippet of code which runs based on a specific condition/variable
@@ -26,8 +31,10 @@ const Row = ({ title, fetchUrl }) => {
           return (
             <img
               key={movie.id}
-              className="row_poster"
-              src={`${baseUrl}${movie.poster_path}`}
+              className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+              src={`${baseUrl}${
+                isLargeRow ? movie.poster_path : movie.backdrop_path
+              }`}
               alt={movie.name}
             />
           );
