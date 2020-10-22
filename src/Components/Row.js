@@ -31,6 +31,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
           return (
             <img
               key={movie.id}
+              // isLargeRow: Prop to set top row larger
               className={`row_poster ${isLargeRow && "row_posterLarge"}`}
               src={`${baseUrl}${
                 isLargeRow ? movie.poster_path : movie.backdrop_path
