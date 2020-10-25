@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import '../Banner.css'
 import axios from "../axios";
 import requests from "../requests";
 
-function Banner() {
+const Banner = () => {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
@@ -16,17 +17,31 @@ function Banner() {
       );
       return request;
     })();
-    console.log(`Movie: ${movie}`);
+    // console.log(`Movie: ${movie}`);
   }, []);
 
   return (
-    <header>
-      {/* Background Image */}
-      {/* title */}
-      {/* div > 2 buttons */}
-      {/* description */}
+    <header
+      className="banner"
+      style={{
+        backgroundSize: "cover",
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        backgroundPosition: "center center",
+      }}
+    >
+      <div className="banner__contents">
+        {/* Some Api's don't always give you all the information
+          that you need, therefore it's really important 
+          to find the edge cases and implement them. */}
+        <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
+        <div className="banner__buttons">
+          <button className="banner__button">Play</button>
+          <button className="banner__button">My List</button>
+        </div>
+        <h1 className="banner__description">{movie?.overview}</h1>
+      </div>
     </header>
   );
-}
+};
 
 export default Banner;
