@@ -4,6 +4,16 @@
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  height: 30px;
+  /* Because this is header, add z-index of 1 */
+  z-index: 1;
+  /* Small trick so nav bar eases in */
+  transition: all 0.5s;
+  transition-timing-function: ease-in;
+}
+
+.nav__black {
+  background-color: #111;
 }
 
 .nav__logo {
