@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import YouTube from "react-youtube";
 import axios from "../axios";
 import "../Row.css";
 
@@ -23,6 +24,8 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     })();
   }, [fetchUrl]);
 
+  const opts = {};
+
   return (
     <div className="row">
       <h2 className="row__title">{title}</h2>
@@ -41,6 +44,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
           );
         })}
       </div>
+      {/* <YouTube videoId={} opts={} /> */}
     </div>
   );
 };
