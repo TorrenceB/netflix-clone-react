@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 import axios from "../axios";
 import "../Row.css";
+import movieTrailer from "movie-trailer";
 
 const baseUrl = "https://image.tmdb.org/t/p/original/";
 
@@ -12,6 +13,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
       update our state.
   */
   const [movies, setMovies] = useState([]);
+  const [trailerUrl, setTrailerUrl] = useState("");
 
   // A snippet of code which runs based on a specific condition/variable
   useEffect(() => {
@@ -24,7 +26,27 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     })();
   }, [fetchUrl]);
 
-  const opts = {};
+  const opts = {
+    height: "390",
+    width: "100%",
+    playerVars: {
+      //  https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
+  };
+
+  const handleClick = (movie) => {
+    if (trailerUrl) {
+      setTrailerUrl("");
+    } else {
+      movieTrailer(movie?.title || "")
+        .then((url) => {
+          const urlParams = new URLSearchParams(new URL(url).search);          
+          setTrailerUrl(urlParams.get("v"));
+        })
+        .catch((error) => console.log(error));
+    }
+  };
 
   return (
     <div className="row">
@@ -33,6 +55,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
         {movies.map((movie) => {
           return (
             <img
+              onClick={() => handleClick(movie)}
               key={movie.id}
               // isLargeRow: Prop to set top row larger
               className={`row_poster ${isLargeRow && "row_posterLarge"}`}
@@ -44,7 +67,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
           );
         })}
       </div>
-      {/* <YouTube videoId={} opts={} /> */}
+      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
     </div>
   );
 };
