@@ -4,11 +4,13 @@ import Row from "./Components/Row";
 import Banner from "./Components/Banner";
 import Nav from "./Components/Nav";
 import requests from "./requests";
+import SelectUser from "./Components/SelectUser";
 
 function App() {
   return (
     <div className="app">
-      <Nav />
+      <SelectUser></SelectUser>
+      {/* <Nav />
       <Banner />
       <Row
         title="NETFLIX ORIGINALS"
@@ -22,7 +24,7 @@ function App() {
       <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
       <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
       <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-      <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+      <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} /> */}
     </div>
   );
 }
