@@ -1,10 +1,11 @@
 import React from "react";
-import "../SelectUser.css"
+import "../SelectUser.css";
+import Nav from "./Nav";
 
-const SelectUser = (props) => {
+const SelectUser = () => {
   return (
     <div className="wrapper">
-      <h1>Select User View!</h1>
+      <Nav></Nav>
     </div>
   );
 };

@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="app">
       <SelectUser></SelectUser>
-      {/* <Nav />
+      {/* <Nav showAvatar="true" />
       <Banner />
       <Row
         title="NETFLIX ORIGINALS"

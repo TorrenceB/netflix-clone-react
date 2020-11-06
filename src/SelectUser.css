@@ -1,4 +1,16 @@
 .wrapper {
-  height: 100%;
   width: 100%;
+  margin: 0;
+  background-color: #111;
+}
+
+.wrapper__nav {
+  padding-top: 5%;
+}
+
+.wrapper__nav__logo {
+  position: fixed;
+  object-fit: contain;
+  width: 80px;
+  left: 20px;
 }
