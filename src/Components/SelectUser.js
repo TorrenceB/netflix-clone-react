@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "../SelectUser.css";
 import Nav from "./Nav";
+import firebase from 'firebase'
 
 const SelectUser = () => {
+  const [user, setUser] = useState({});
+
+  const fetchUser = () => {
+    const db = firebase.firestore();
+    console.log(`Firebase: ${db}`);
+  };
+
   return (
     <div className="wrapper">
       <Nav></Nav>

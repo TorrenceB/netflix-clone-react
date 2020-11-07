@@ -37,11 +37,17 @@
 .wrapper__avatar {
   width: 150px;
   height: 150px;
+  transition: 450ms;
+}
+
+.wrapper__avatar:hover {
+  transform: scale(1.09);
 }
 
 .wrapper__username {
   color: white;
   display: flex;
+  padding-top: 10%;
   align-items: center;
   flex-direction: column;
 }
