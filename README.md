@@ -11,6 +11,7 @@
 
 * Using React-Router to add both a login-page to incorporate user-authentication as well as a "Who's watching?" view.
 * Ability to add and fetch a User's "Viewer" to Firestore via "Who's watching?" view.
+* User authentication using Firebase
 
 * Demonstrated use of React functional components, with custom props 
 * Use of React hooks for state management
