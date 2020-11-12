@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import "../SelectUser.css";
 import Nav from "./Nav";
-import firebase from "./Firestore";
+import firebase from "../firebase/index";
 
-const SelectUser = () => {
-  const [user, setUser] = useState({});
+const SelectViewer = () => {
+  const [viewers, setViewer] = useState([]);
 
-  const fetchUser = () => {
-    const db = firebase.firestore();
-    console.log(`Firebase: ${db}`);
+  const fetchViewer = () => {
+    const collection = firebase.db;
+    const data = collection
+      .collection("users")
+      .doc(/* userId */)
+      .collection("viewers")
+      .doc(/* viewerID */)
+      .get();
   };
-
-  fetchUser();
 
   return (
     <div className="wrapper">
@@ -46,4 +49,4 @@ const SelectUser = () => {
   );
 };
 
-export default SelectUser;
+export default SelectViewer;

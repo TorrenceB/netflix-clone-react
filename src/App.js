@@ -4,13 +4,13 @@ import Row from "./Components/Row";
 import Banner from "./Components/Banner";
 import Nav from "./Components/Nav";
 import requests from "./requests";
-import Firebase from "./Firestore";
-import SelectUser from "./Components/SelectUser";
+import firebase from "./firebase/index";
+import SelectViewer from "./Components/SelectViewer";
 
 function App() {
   return (
     <div className="app">
-      <SelectUser></SelectUser>
+      <SelectViewer></SelectViewer>
       {/* <Nav showAvatar="true" />
       <Banner />
       <Row
