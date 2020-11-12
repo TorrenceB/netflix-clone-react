@@ -13,5 +13,8 @@
 * Ability to add and fetch a User's "Viewer" to Firestore via "Who's watching?" view.
 * User authentication using Firebase
 
+### Technologies
+
 * Demonstrated use of React functional components, with custom props 
 * Use of React hooks for state management
+* Used Axios library to request and retrieve data from tmdb api
