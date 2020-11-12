@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../SelectUser.css";
 import Nav from "./Nav";
-import firebase from 'firebase'
+import firebase from "./Firestore";
 
 const SelectUser = () => {
   const [user, setUser] = useState({});
@@ -10,6 +10,8 @@ const SelectUser = () => {
     const db = firebase.firestore();
     console.log(`Firebase: ${db}`);
   };
+
+  fetchUser();
 
   return (
     <div className="wrapper">

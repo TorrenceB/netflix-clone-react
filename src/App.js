@@ -4,6 +4,7 @@ import Row from "./Components/Row";
 import Banner from "./Components/Banner";
 import Nav from "./Components/Nav";
 import requests from "./requests";
+import Firebase from "./Firestore";
 import SelectUser from "./Components/SelectUser";
 
 function App() {
