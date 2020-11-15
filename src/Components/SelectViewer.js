@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import "../SelectUser.css";
 import Nav from "./Nav";
 import firebase from "../firebase/index";
+import { ReactComponent as AddIcon } from "../assets/add_circle-24px.svg";
 
 const SelectViewer = () => {
   const [viewers, setViewers] = useState([]);
 
   useEffect(() => {
-    const collection = firebase.db;
-    const data = collection
+    // TODO: Need unsubcribe callback()
+    const instance = firebase.db;
+    const data = instance
       .collection("users")
       .doc("wKhE5XNt4GwNJZLuAuNl")
       .collection("viewers")
@@ -20,6 +22,10 @@ const SelectViewer = () => {
         setViewers(fetchViewers);
       });
   }, []);
+
+  const addProfileHandler = () => {
+    console.log('Add profile clicked!');
+  }
 
   return (
     <div className="wrapper">
@@ -35,6 +41,10 @@ const SelectViewer = () => {
               </div>
             );
           })}
+          <div className="wrapper__user__col">
+            <AddIcon onClick={addProfileHandler} className="wrapper__icon"></AddIcon>
+            <h3 className="wrapper__username">Add Profile</h3>
+          </div>
         </div>
       </div>
     </div>
