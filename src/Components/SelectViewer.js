@@ -10,7 +10,7 @@ const SelectViewer = () => {
   useEffect(() => {
     // TODO: Need unsubcribe callback()
     const instance = firebase.db;
-    const data = instance
+    const unsubcribe = instance
       .collection("users")
       .doc("wKhE5XNt4GwNJZLuAuNl")
       .collection("viewers")
@@ -21,6 +21,8 @@ const SelectViewer = () => {
         }));
         setViewers(fetchViewers);
       });
+
+      return () => unsubcribe();
   }, []);
 
   const addProfileHandler = () => {
@@ -36,6 +38,7 @@ const SelectViewer = () => {
           {viewers.map((viewer) => {
             return (
               <div key={viewer.id} className="wrapper__user__col">
+                {/* TODO: On avatar click, route to main view */}
                 <img className="wrapper__avatar" src={viewer.avatarUrl}></img>
                 <h3 className="wrapper__username">{viewer.viewerName}</h3>
               </div>
