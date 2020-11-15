@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../SelectUser.css";
 import Nav from "./Nav";
 import firebase from "../firebase/index";
 
 const SelectViewer = () => {
-  const [viewers, setViewer] = useState([]);
+  const [viewers, setViewers] = useState([]);
 
-  const fetchViewer = () => {
+  useEffect(() => {
     const collection = firebase.db;
     const data = collection
       .collection("users")
-      .doc(/* userId */)
+      .doc("wKhE5XNt4GwNJZLuAuNl")
       .collection("viewers")
-      .doc(/* viewerID */)
-      .get();
-  };
+      .onSnapshot((snapshot) => {
+        const fetchViewers = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setViewers(fetchViewers);
+      });
+  }, []);
 
   return (
     <div className="wrapper">
@@ -22,27 +27,14 @@ const SelectViewer = () => {
       <div className="wrapper__content">
         <h1 className="wrapper__title">Who's Watching?</h1>
         <div className="wrapper__user__row">
-          <div className="wrapper__user__col">
-            <img
-              className="wrapper__avatar"
-              src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png"
-            ></img>
-            <h3 className="wrapper__username">Torrence</h3>
-          </div>
-          <div className="wrapper__user__col">
-            <img
-              className="wrapper__avatar"
-              src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png"
-            ></img>
-            <h3 className="wrapper__username">Torrence</h3>
-          </div>
-          <div className="wrapper__user__col">
-            <img
-              className="wrapper__avatar"
-              src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png"
-            ></img>
-            <h3 className="wrapper__username">Torrence</h3>
-          </div>
+          {viewers.map((viewer) => {
+            return (
+              <div key={viewer.id} className="wrapper__user__col">
+                <img className="wrapper__avatar" src={viewer.avatarUrl}></img>
+                <h3 className="wrapper__username">{viewer.viewerName}</h3>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
