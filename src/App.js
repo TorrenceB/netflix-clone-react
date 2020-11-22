@@ -1,32 +1,30 @@
 import React from "react";
 import "./App.css";
-import Row from "./Components/Row";
-import Banner from "./Components/Banner";
-import Nav from "./Components/Nav";
-import requests from "./requests";
-import firebase from "./firebase/index";
+import Main from "./Main";
 import SelectViewer from "./Components/SelectViewer";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
+  // const [view, setView] = useState();
+
+  // useEffect(() => {
+  //   // onclick avatar view = main
+    
+  // }, []);
+
+  const handleClick = () => {
+    return(
+      <Main></Main>
+    )
+  };
+
   return (
-    <div className="app">
-      <SelectViewer></SelectViewer>
-      {/* <Nav showAvatar="true" />
-      <Banner />
-      <Row
-        title="NETFLIX ORIGINALS"
-        fetchUrl={requests.fetchNetflixOriginals}
-        // Defaults to true
-        isLargeRow
-      />
-      <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
-      <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-      <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-      <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-      <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-      <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} /> */}
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <SelectViewer viewHandler={handleClick}></SelectViewer>
+        {/* <Main></Main> */}
+      </div>
+    </BrowserRouter>
   );
 }
 

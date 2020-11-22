@@ -4,7 +4,7 @@ import Nav from "./Nav";
 import firebase from "../firebase/index";
 import { ReactComponent as AddIcon } from "../assets/add_circle-24px.svg";
 
-const SelectViewer = () => {
+const SelectViewer = ({ viewHandler }) => {
   const [viewers, setViewers] = useState([]);
 
   useEffect(() => {
@@ -22,12 +22,12 @@ const SelectViewer = () => {
         setViewers(fetchViewers);
       });
 
-      return () => unsubcribe();
+    return () => unsubcribe();
   }, []);
 
   const addProfileHandler = () => {
-    console.log('Add profile clicked!');
-  }
+    console.log("Add profile clicked!");
+  };
 
   return (
     <div className="wrapper">
@@ -39,13 +39,20 @@ const SelectViewer = () => {
             return (
               <div key={viewer.id} className="wrapper__user__col">
                 {/* TODO: On avatar click, route to main view */}
-                <img className="wrapper__avatar" src={viewer.avatarUrl}></img>
+                <img
+                  onClick={viewHandler}
+                  className="wrapper__avatar"
+                  src={viewer.avatarUrl}
+                ></img>
                 <h3 className="wrapper__username">{viewer.viewerName}</h3>
               </div>
             );
           })}
           <div className="wrapper__user__col">
-            <AddIcon onClick={addProfileHandler} className="wrapper__icon"></AddIcon>
+            <AddIcon
+              onClick={addProfileHandler}
+              className="wrapper__icon"
+            ></AddIcon>
             <h3 className="wrapper__username">Add Profile</h3>
           </div>
         </div>
