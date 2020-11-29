@@ -7,7 +7,7 @@ import requests from "./requests";
 function Main() {
   return (
     <div className="wrapper">
-      <Nav showAvatar="true" />
+      {/* <Nav showAvatar="true" /> */}
       <Banner />
       <Row
         title="NETFLIX ORIGINALS"
