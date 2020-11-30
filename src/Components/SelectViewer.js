@@ -4,7 +4,7 @@ import Nav from "./Nav";
 import firebase from "../firebase/index";
 import { ReactComponent as AddIcon } from "../assets/add_circle-24px.svg";
 
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const SelectViewer = ({ viewHandler }) => {
   const [viewers, setViewers] = useState([]);
@@ -33,14 +33,14 @@ const SelectViewer = ({ viewHandler }) => {
 
   return (
     <div className="wrapper">
-      {/* <Nav></Nav> */}
+      <Nav></Nav>
       <div className="wrapper__content">
         <h1 className="wrapper__title">Who's Watching?</h1>
         <div className="wrapper__user__row">
           {viewers.map((viewer) => {
             return (
               <div key={viewer.id} className="wrapper__user__col">
-                {/* TODO: On avatar click, route to main view */}
+                {/* Todo: Add effects between page transition */}
                 <Link to="/main">
                   <img
                     onClick={viewHandler}

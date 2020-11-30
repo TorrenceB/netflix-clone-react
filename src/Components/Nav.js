@@ -11,7 +11,9 @@ const Nav = ({ showAvatar }) => {
       } else handleShow(false);
     });
     return () => {
-      window.removeEventListener("scroll");
+      window.removeEventListener("scroll", () =>
+        console.log("Scroll listener removed...")
+      );
     };
   }, []);
 
