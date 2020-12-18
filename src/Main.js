@@ -6,7 +6,7 @@ import requests from "./requests";
 
 function Main() {
   return (
-    <div className="wrapper">
+    <div className="app-wrapper">
       <Nav showAvatar="true" />
       <Banner />
       <Row

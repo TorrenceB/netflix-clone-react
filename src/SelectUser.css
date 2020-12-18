@@ -7,7 +7,6 @@
 }
 
 .wrapper__title {
-  /* background-color: Purple; */
   color: white;
   display: flex;
   justify-content: center;
@@ -15,14 +14,12 @@
 }
 
 .wrapper__content {
-  /* background-color: Red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .wrapper__user__row {
-  /* background-color: Red; */
   display: flex;
   justify-content: center;
 }
