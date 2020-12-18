@@ -25,7 +25,7 @@ const SelectViewer = ({ viewHandler }) => {
       });
 
     return () => unsubcribe();
-  }, []);
+  }, [viewers]);
 
   const addProfileHandler = () => {
     console.log("Add profile clicked!");
