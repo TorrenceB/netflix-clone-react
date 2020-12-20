@@ -26,15 +26,14 @@
 
 .wrapper__user__col {
   display: flex;
-  max-width: 200px;
+  /* max-width: 200px; */
   flex-direction: column;
   align-items: center;
 }
 
 .wrapper__avatar {
-  width: 150px;
-  height: 150px;
   transition: 450ms;
+  flex: 1;
 }
 
 .wrapper__avatar:hover {
@@ -43,9 +42,7 @@
 
 .wrapper__icon {
   background-color: white;
-  width: 150px;
-  height: 150px;
-
+  flex: 1;
   transition: 450ms;
 }
 
@@ -59,4 +56,10 @@
   padding-top: 10%;
   align-items: center;
   flex-direction: column;
+}
+
+@media only screen and (max-width: 500px) {
+  .wrapper {
+    display: flex;
+  }
 }

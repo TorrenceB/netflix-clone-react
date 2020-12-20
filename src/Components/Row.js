@@ -3,6 +3,7 @@ import YouTube from "react-youtube";
 import axios from "../axios";
 import "../Row.css";
 import movieTrailer from "movie-trailer";
+import { ReactComponent as MovieIcon } from "../assets/movie_filter-24px.svg";
 
 const baseUrl = "https://image.tmdb.org/t/p/original/";
 
@@ -41,7 +42,7 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     } else {
       movieTrailer(movie?.title || "")
         .then((url) => {
-          const urlParams = new URLSearchParams(new URL(url).search);          
+          const urlParams = new URLSearchParams(new URL(url).search);
           setTrailerUrl(urlParams.get("v"));
         })
         .catch((error) => console.log(error));
@@ -53,18 +54,32 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
       <h2 className="row__title">{title}</h2>
       <div className="row_posters">
         {movies.map((movie) => {
-          return (
-            <img
-              onClick={() => handleClick(movie)}
-              key={movie.id}
-              // isLargeRow: Prop to set top row larger
-              className={`row_poster ${isLargeRow && "row_posterLarge"}`}
-              src={`${baseUrl}${
-                isLargeRow ? movie.poster_path : movie.backdrop_path
-              }`}
-              alt={movie.name}
-            />
-          );
+          console.log(movie);
+          if (movie.backdrop_path != null || undefined) {
+            return (
+              <img
+                onClick={() => handleClick(movie)}
+                key={movie.id}
+                // isLargeRow: Prop to set top row larger
+                className={`row_poster ${isLargeRow && "row_posterLarge"}`}
+                src={`${baseUrl}${
+                  isLargeRow ? movie.poster_path : movie.backdrop_path
+                }`}
+                alt={movie.name}
+              />
+            );
+          } else {
+            return (
+              <div
+                className="row_poster"
+                key={movie.id}
+                onClick={() => handleClick(movie)}
+              >
+                <MovieIcon className="row_poster__alt-item--icon"></MovieIcon>
+                <div className="row_poster__alt-item--text">{movie.title}</div>
+              </div>
+            );
+          }
         })}
       </div>
       {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}

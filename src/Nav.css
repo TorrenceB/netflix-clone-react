@@ -26,6 +26,6 @@
 .nav__avatar {
   position: fixed;
   right: 20px;
-  width: 30px;
+  width: 40px;
   object-fit: contain;
 }

@@ -1,5 +1,6 @@
 .row {
   margin-left: 3%;
+  margin-right: 3%;
   color: #fff;
 }
 
@@ -18,6 +19,7 @@
 .row_poster {
   object-fit: contain;
   width: 100%;
+  min-width: 170px;
   max-height: 100px;
   margin-right: 1%;
   transition: 450ms;
@@ -34,4 +36,15 @@
 .row_posterLarge:hover {
   transform: scale3d(1.1);
   opacity: 1;
+}
+
+.row_poster__alt-item--icon {
+  height: 30%;
+  width: 100%;
+  background-color: white;
+}
+
+.row_poster__alt-item--text {
+  width: 100%;
+  height: 70%;
 }
