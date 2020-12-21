@@ -57,7 +57,6 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
   return (
     <div className="row">
       <h2 className="row__title">{title}</h2>
-      {/* <div className="row_posters"> */}
       <Swiper
         style={{
           display: "flex",
@@ -65,7 +64,16 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
           paddingBottom: "20px",
           zIndex: "0",
         }}
-        slidesPerView={2}
+        breakpoints={{
+          375: {
+            width: 375,
+            slidesPerView: 2,
+          },
+          // 600: {
+          //   width: 600,
+          //   slidesPerView: 3,
+          // },
+        }}
         loop={true}
         navigation
       >
@@ -104,7 +112,6 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
           }
         })}
       </Swiper>
-      {/* </div> */}
       {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
     </div>
   );
