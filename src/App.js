@@ -7,14 +7,15 @@ import { Route, Switch } from "react-router-dom";
 function App() {
   return (
     <div className="app">
-      <Switch>
+      <Main></Main>
+      {/* <Switch>
         <Route path="/" exact>
           <SelectViewer></SelectViewer>
         </Route>
         <Route path="/main">
           <Main></Main>
         </Route>
-      </Switch>
+      </Switch> */}
     </div>
   );
 }
