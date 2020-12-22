@@ -60,3 +60,23 @@
     #111
   );
 }
+
+@media only screen and (max-width: 374px) {
+  .banner__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .banner__button {
+    margin-top: 10px;
+  }
+  
+  .banner__title {
+    align-items: center;
+  }
+
+  .banner__description {
+    align-items: center;
+  }
+}

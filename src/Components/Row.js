@@ -69,11 +69,10 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
             width: 375,
             slidesPerView: 2,
           },
-          // 600: {
-          //   width: 600,
-          //   slidesPerView: 3,
-          // },
         }}
+        slidesPerView="auto"
+        loopedSlides={movies.length}
+        // loopFillGroupWithBlank={false}
         loop={true}
         navigation
       >
@@ -81,10 +80,10 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
           console.log(movie);
           if (movie.backdrop_path != null || undefined) {
             return (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={movie.id}>
                 <img
                   onClick={() => handleClick(movie)}
-                  key={movie.id}
+                  // key={movie.id}
                   // isLargeRow: Prop to set top row larger
                   className={`row_poster ${isLargeRow && "row_posterLarge"}`}
                   src={`${baseUrl}${
