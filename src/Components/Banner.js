@@ -30,7 +30,11 @@ const Banner = () => {
       style={{
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        backgroundImage: movie?.backdrop_path
+          ? `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`
+          : `url(
+              "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1500&q=80"
+            )`,
         backgroundPosition: "center center",
       }}
     >
